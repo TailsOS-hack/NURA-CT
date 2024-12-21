@@ -13,7 +13,18 @@ normal_dir = 'normal'
 img_size = 128
 batch_size = 32
 
-data_gen = ImageDataGenerator(rescale=1.0/255, validation_split=0.2)
+# Augment data for better learning
+data_gen = ImageDataGenerator(
+    rescale=1.0/255,
+    validation_split=0.2,
+    rotation_range=15,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    shear_range=0.1,
+    zoom_range=0.1,
+    horizontal_flip=True,
+    fill_mode='nearest'
+)
 
 train_data = data_gen.flow_from_directory(
     '.',
@@ -39,7 +50,7 @@ model = Sequential([
     Conv2D(128, (3, 3), activation='relu'),
     MaxPooling2D((2, 2)),
     Flatten(),
-    Dense(128, activation='relu'),
+    Dense(256, activation='relu'),
     Dropout(0.5),
     Dense(1, activation='sigmoid')
 ])
@@ -48,7 +59,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 
 accuracy = 0
 while accuracy < 0.95:
-    history = model.fit(train_data, validation_data=val_data, epochs=1)
+    history = model.fit(train_data, validation_data=val_data, epochs=1, verbose=1)
     test_imgs, test_labels = [], []
     for img_batch, label_batch in val_data:
         test_imgs.extend(img_batch)
@@ -56,7 +67,7 @@ while accuracy < 0.95:
         if len(test_imgs) >= val_data.samples:
             break
 
-    preds = model.predict(np.array(test_imgs))
+    preds = model.predict(np.array(test_imgs), verbose=0)
     preds = (preds > 0.5).astype(int).flatten()
     accuracy = accuracy_score(test_labels[:len(preds)], preds)
     print(f"Test Accuracy: {accuracy * 100:.2f}%")
@@ -84,6 +95,6 @@ for folder in [stroke_test_dir, normal_test_dir]:
             continue
         img_resized = ImageOps.fit(img, (img_size, img_size))
         img_array = np.array(img_resized) / 255.0
-        pred = model.predict(np.expand_dims(img_array, axis=0))[0][0] > 0.5
+        pred = model.predict(np.expand_dims(img_array, axis=0), verbose=0)[0][0] > 0.5
         bordered_img = draw_border(img, int(pred))
         bordered_img.show()
