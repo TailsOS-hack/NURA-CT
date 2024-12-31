@@ -107,7 +107,7 @@ y_val = np.expand_dims(y_val, axis=-1)
 history = model.fit(
     X_train, y_train,
     validation_data=(X_val, y_val),
-    epochs=50,
+    epochs=5,
     batch_size=1,
     verbose=1
 )
