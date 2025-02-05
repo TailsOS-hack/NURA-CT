@@ -3,3 +3,7 @@ nibabel
 tensorflow
 scikit-learn
 scipy
+matplotlib
+scikit-image
+pillow
+tk
