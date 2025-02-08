@@ -27,7 +27,7 @@ def generate_report(image_path, model, processor):
 
 def main():
     image_path = "tumor_ex.jpeg"  # Replace with your image path
-    model_id = "llava-hf/llava-1.5-7b-hf"
+    model_id = "microsoft/llava-med-v1.5-mistral-7b"
     model = LlavaForConditionalGeneration.from_pretrained(model_id, device_map="auto")
     processor = LlavaProcessor.from_pretrained(model_id)
     try:
