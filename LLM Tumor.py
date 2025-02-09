@@ -1,22 +1,14 @@
 import os
 import torch
 import torch.distributed as dist
-from transformers import (
-    LlavaForConditionalGeneration,
-    LlavaProcessor,
-)
+from transformers import AutoProcessor, AutoModelForImageTextToText
 import requests
 from PIL import Image
 
-# Update the model ID
-model_id = "llava-hf/llava-1.5-7b-hf"
-model = LlavaForConditionalGeneration.from_pretrained(
-    model_id,
-    device_map="auto",  # Automatically assign GPUs if available
-)
-
-# Directly use LlavaProcessor, it initializes the image processor internally
-processor = LlavaProcessor.from_pretrained(model_id)  
+# Load model directly
+model_id = "Qwen/QVQ-72B-Preview"
+processor = AutoProcessor.from_pretrained(model_id)
+model = AutoModelForImageTextToText.from_pretrained(model_id)
 
 # Get the image path from the user or URL
 image_path_or_url = "tumor_ex.jpeg"  # Or a URL like in your provided code
