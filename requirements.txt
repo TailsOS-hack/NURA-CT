@@ -7,3 +7,4 @@ matplotlib
 scikit-image
 pillow
 tk
+google-generativeai
