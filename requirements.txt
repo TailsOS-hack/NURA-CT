@@ -8,3 +8,4 @@ scikit-image
 pillow
 tk
 google-generativeai
+Flask

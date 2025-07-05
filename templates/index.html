@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Stroke Detection GUI</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; color: #333; }
+        .container { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        .upload-form { margin-bottom: 30px; text-align: center; }
+        .results { display: flex; justify-content: space-around; flex-wrap: wrap; }
+        .image-container { margin: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; background-color: #f9f9f9; text-align: center; }
+        .image-container img { max-width: 100%; height: auto; border-radius: 4px; }
+        .image-container p { font-weight: bold; margin-top: 5px; }
+        .error { color: red; text-align: center; margin-bottom: 20px;}
+        .message { color: green; text-align: center; margin-bottom: 20px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stroke Detection from CT Scans</h1>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if message %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        <div class="upload-form">
+            <form method="post" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+                <input type="file" name="file" required>
+                <input type="submit" value="Upload and Analyze">
+            </form>
+        </div>
+
+        {% if message and not error %}
+            <p class="message">{{ message }}</p>
+        {% endif %}
+
+        {% if original_image %}
+        <div class="results">
+            <div class="image-container">
+                <p>Original CT Scan Slice (Layer: {{ layer_index }})</p>
+                <img src="{{ original_image }}" alt="Original CT Scan">
+            </div>
+            {% if segmented_image %}
+            <div class="image-container">
+                <p>Segmented Stroke Area (Layer: {{ layer_index }})</p>
+                <img src="{{ segmented_image }}" alt="Segmented Stroke Area">
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
