@@ -7,4 +7,7 @@ matplotlib
 scikit-image
 pillow
 tk
-google-generativeai
+torch
+transformers
+huggingface-hub
+accelerate
