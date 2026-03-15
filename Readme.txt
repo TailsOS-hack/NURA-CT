@@ -1,1 +1,0 @@
-This is a ML (Machine Learning) based project on stroke detection capable of detecting strokes in MRI scans. 
