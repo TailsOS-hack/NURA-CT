@@ -1,8 +1,7 @@
 <div align="center">
 
-# 🧠 NURA-CT
+# NURA-CT
 
-**Neural Understanding & Radiological Analysis for CT**
 
 An ML-powered toolkit for detecting strokes and classifying brain tumors from medical imaging — with a fully interactive Streamlit GUI.
 
