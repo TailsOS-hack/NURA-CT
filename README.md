@@ -20,10 +20,10 @@ An ML-powered toolkit for detecting strokes and classifying brain tumors from me
 
 ### 📸 GUI Screenshots
 
-| Bright-Region Detection | Tumor Classification | Stroke Segmentation |
-|:-:|:-:|:-:|
-| <img src="screenshots/bright_region_result.png" width="100%"> | <img src="screenshots/tumor_classification.png" width="100%"> | <img src="screenshots/stroke_segmentation.png" width="100%"> |
-| Adaptive threshold detects bright anomalies | CNN classifies Glioma / Meningioma / Pituitary | 3D U-Net segments stroke regions in CT volumes |
+| Bright-Region Detection | Tumor Classification |
+|:-:|:-:|
+| <img src="screenshots/bright_region_result.png" width="100%"> | <img src="screenshots/tumor_classification.png" width="100%"> |
+| Adaptive threshold detects bright anomalies | CNN classifies Glioma / Meningioma / Pituitary |
 
 ---
 
