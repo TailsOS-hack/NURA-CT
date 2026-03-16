@@ -2,6 +2,7 @@
 
 # NURA-CT
 
+**Neural Understanding & Radiological Analysis for CT**
 
 An ML-powered toolkit for detecting strokes and classifying brain tumors from medical imaging — with a fully interactive Streamlit GUI.
 
@@ -18,7 +19,7 @@ An ML-powered toolkit for detecting strokes and classifying brain tumors from me
 
 </div>
 
-### 📸 GUI Screenshots
+### GUI Screenshots
 
 | Bright-Region Detection | Tumor Classification |
 |:-:|:-:|
@@ -27,17 +28,17 @@ An ML-powered toolkit for detecting strokes and classifying brain tumors from me
 
 ---
 
-## ✨ Features
+## Features
 
 | Mode | Description | Input | Model |
 |------|-------------|-------|-------|
-| 🔍 **Bright-Region Detection** | Fast threshold-based anomaly spotter (mean + σ) | Any 2D brain image (JPG/PNG) | None — works instantly |
-| 🧬 **Tumor Classification** | 4-layer CNN classifies Glioma, Meningioma, or Pituitary tumors | MRI image | `brain_tumor_model.h5` |
-| 🩻 **Stroke Segmentation** | 3D U-Net segments stroke regions in volumetric CT scans | NIfTI `.nii` file | `stroke_segmentation_model_3d.h5` |
+| **Bright-Region Detection** | Fast threshold-based anomaly spotter (mean + σ) | Any 2D brain image (JPG/PNG) | None — works instantly |
+| **Tumor Classification** | 4-layer CNN classifies Glioma, Meningioma, or Pituitary tumors | MRI image | `brain_tumor_model.h5` |
+| **Stroke Segmentation** | 3D U-Net segments stroke regions in volumetric CT scans | NIfTI `.nii` file | `stroke_segmentation_model_3d.h5` |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone & install
 
@@ -60,7 +61,7 @@ The app opens at **http://localhost:8501**. Use the sidebar to switch between th
 
 ---
 
-## 🏋️ Training the Models
+## Training the Models
 
 ### Brain Tumor CNN
 
@@ -79,17 +80,17 @@ cd "Stroke Code and Data"
 python "Main Code.py"
 ```
 
-Trains a 3D U-Net encoder–decoder on NIfTI CT volumes with skip connections. Saves as `stroke_segmentation_model_3d.h5`.
+Trains a 3D U-Net encoder-decoder on NIfTI CT volumes with skip connections. Saves as `stroke_segmentation_model_3d.h5`.
 
 **Architecture:** Encoder (64 → 128 → 256) → Decoder with skip connections → Sigmoid output
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 NURA-CT/
-├── app.py                          # 🖥️  Streamlit GUI (start here!)
+├── app.py                          # Streamlit GUI (start here!)
 ├── requirements.txt                # Python dependencies
 ├── check_specs.py                  # GPU / system info checker
 ├── LLM.py                         # Bright-region detector (standalone)
@@ -113,7 +114,7 @@ NURA-CT/
 
 ---
 
-## 🔧 System Requirements
+## System Requirements
 
 Run `python check_specs.py` to verify your setup.
 
@@ -126,7 +127,7 @@ Run `python check_specs.py` to verify your setup.
 
 ---
 
-## 📖 How It Works
+## How It Works
 
 ### Bright-Region Detection
 
@@ -137,28 +138,21 @@ Run `python check_specs.py` to verify your setup.
 
 ### Tumor Classification (CNN)
 
-1. Resize MRI to 150×150, normalize to [0, 1]
+1. Resize MRI to 150x150, normalize to [0, 1]
 2. Data augmentation: rotation, shift, shear, zoom, flip
 3. Forward pass through 4 conv blocks + dense layers
 4. Softmax output → Glioma / Meningioma / Pituitary
 
 ### Stroke Segmentation (3D U-Net)
 
-1. Load NIfTI volume, resize to 128×128×64
+1. Load NIfTI volume, resize to 128x128x64
 2. Normalize per-volume to [0, 1]
-3. Encoder–decoder with skip connections produces voxel-wise probability map
+3. Encoder-decoder with skip connections produces voxel-wise probability map
 4. Threshold at 0.5 → binary mask overlay on CT slice
 
 ---
 
-## ⚠️ Disclaimer
-
-> **This software is for educational and research purposes only.**  
-> NURA-CT is not a certified medical device and must not be used for clinical diagnosis, treatment planning, or any medical decision-making. Always consult a qualified radiologist or medical professional.
-
----
-
-## 🤝 Contributors
+## Contributors
 
 <a href="https://github.com/TailsOS-hack"><img src="https://github.com/TailsOS-hack.png" width="60" style="border-radius:50%"></a>
 <a href="https://github.com/Anorakbyte1"><img src="https://github.com/Anorakbyte1.png" width="60" style="border-radius:50%"></a>
@@ -166,5 +160,5 @@ Run `python check_specs.py` to verify your setup.
 ---
 
 <div align="center">
-<sub>Built with ❤️ using TensorFlow, Streamlit & Python</sub>
+<sub>Built with TensorFlow, Streamlit & Python</sub>
 </div>
