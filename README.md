@@ -12,11 +12,18 @@ An ML-powered toolkit for detecting strokes and classifying brain tumors from me
 
 <br>
 
-<img src="https://github.com/user-attachments/assets/placeholder-screenshot" alt="NURA-CT GUI" width="90%">
+<img src="screenshots/bright_region_result.png" alt="NURA-CT — Bright-Region Detection" width="90%">
 
 *Upload a brain scan → choose your analysis mode → get instant results*
 
 </div>
+
+### 📸 GUI Screenshots
+
+| Bright-Region Detection | Tumor Classification | Stroke Segmentation |
+|:-:|:-:|:-:|
+| <img src="screenshots/bright_region_result.png" width="100%"> | <img src="screenshots/tumor_classification.png" width="100%"> | <img src="screenshots/stroke_segmentation.png" width="100%"> |
+| Adaptive threshold detects bright anomalies | CNN classifies Glioma / Meningioma / Pituitary | 3D U-Net segments stroke regions in CT volumes |
 
 ---
 
